@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -15,8 +16,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+    <html lang="pt-BR" className="h-full">
+      <body
+        className={cn(
+          'relative flex h-full flex-col antialiased',
+          inter.className,
+        )}
+      >
+        <div className="mx-auto my-16 flex h-full w-full max-w-screen-md grow flex-col px-3 md:px-6">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
