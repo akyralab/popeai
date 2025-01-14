@@ -7,23 +7,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { providers } from '@/config'
+import { providersConfig } from '@/config'
 import { usePopeAI } from '@/contexts/popeai'
-import { ProviderProps } from '@/types'
+import { ProviderValueProps } from '@/types'
 
 export function SelectProvider() {
-  const { provider, setProvider } = usePopeAI()
+  const { provider, setProviderConfig } = usePopeAI()
 
   return (
     <Select
-      onValueChange={(value) => setProvider(value as ProviderProps)}
-      defaultValue={provider ?? ''}
+      onValueChange={(value) => setProviderConfig(value as ProviderValueProps)}
+      defaultValue={provider.value}
     >
       <SelectTrigger className="w-[240px] shadow-none">
         <SelectValue placeholder="Select your AI model" />
       </SelectTrigger>
       <SelectContent>
-        {providers.map((provider) => (
+        {providersConfig.map((provider) => (
           <SelectItem value={provider.value} key={provider.value}>
             <div className="flex items-center gap-2">
               <provider.Icon size={16} />

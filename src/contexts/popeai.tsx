@@ -1,20 +1,29 @@
 'use client'
 
-import { ProviderProps } from '@/types'
+import { providersConfig } from '@/config'
+import { ProviderProps, ProviderValueProps } from '@/types'
 import { createContext, useContext, useState } from 'react'
 
 type PopeAIContextProps = {
-  provider: ProviderProps | null
-  setProvider: (provider: ProviderProps | null) => void
+  provider: ProviderProps
+  setProviderConfig: (value: ProviderValueProps) => void
 }
 
 const PopeAIContext = createContext<PopeAIContextProps | undefined>(undefined)
 
 export function PopeAIProvider({ children }: { children: React.ReactNode }) {
-  const [provider, setProvider] = useState<ProviderProps | null>(null)
+  const [provider, setProvider] = useState<ProviderProps>(providersConfig[0])
+
+  const setProviderConfig = (value: ProviderValueProps) => {
+    const newProvider = providersConfig.find(
+      (provider) => provider.value === value,
+    )
+
+    setProvider(newProvider as ProviderProps)
+  }
 
   return (
-    <PopeAIContext.Provider value={{ provider, setProvider }}>
+    <PopeAIContext.Provider value={{ provider, setProviderConfig }}>
       {children}
     </PopeAIContext.Provider>
   )

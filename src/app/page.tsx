@@ -1,3 +1,4 @@
+import { Setup } from '@/components/sections/setup'
 import { SelectProvider } from '@/components/select-provider'
 import { badgeVariants } from '@/components/ui/badge'
 import { siteConfig } from '@/config'
@@ -18,14 +19,7 @@ export default function Home() {
         <SelectProvider />
       </section>
 
-      <section className="flex flex-col gap-2">
-        <h2>Setup</h2>
-        <p className="text-sm text-muted-foreground">
-          The OpenAI provider contains language model support for the OpenAI
-          chat and completion APIs and embedding model support for the OpenAI
-          embeddings API.
-        </p>
-      </section>
+      <Setup />
     </>
   )
 }

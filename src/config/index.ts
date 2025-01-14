@@ -1,6 +1,5 @@
-import { GoogleIcon, OpenAiIcon } from '@/assets/icons'
+import { GoogleIcon, OpenAIIcon } from '@/assets/icons'
 import { ProviderProps } from '@/types'
-import { FC } from 'react'
 
 export const siteConfig = {
   name: 'PopeAI',
@@ -13,20 +12,25 @@ export const siteConfig = {
   },
 }
 
-export const providers: {
-  name: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Icon: FC<any>
-  value: ProviderProps
-}[] = [
+export const providersConfig: ProviderProps[] = [
   {
     name: 'OpenAI',
-    Icon: OpenAiIcon,
+    Icon: OpenAIIcon,
     value: 'openai',
+    setup: {
+      description:
+        'The OpenAI provider contains language model support for the OpenAI chat and completion APIs and embedding model support for the OpenAI embeddings API.',
+      code: '@ai-sdk/openai',
+    },
   },
   {
     name: 'Gemini',
     Icon: GoogleIcon,
     value: 'gemini',
+    setup: {
+      description:
+        'The Google Generative AI provider contains language and embedding model support for the Google Generative AI APIs.',
+      code: '@ai-sdk/google',
+    },
   },
 ]
