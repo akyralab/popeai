@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { PopeAIProvider } from '@/contexts/popeai'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,9 +24,11 @@ export default function RootLayout({
           inter.className,
         )}
       >
-        <div className="mx-auto my-16 flex h-full w-full max-w-screen-md grow flex-col px-3 md:px-6">
-          {children}
-        </div>
+        <PopeAIProvider>
+          <div className="mx-auto my-16 flex h-full w-full max-w-screen-md grow flex-col gap-16 px-3 md:px-6">
+            {children}
+          </div>
+        </PopeAIProvider>
       </body>
     </html>
   )
